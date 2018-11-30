@@ -8,11 +8,15 @@ const models = require('./models/index');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.get('/', function (req, res) {
+      res.send("hellow orld")
+})
+
 // Add a bit of logging
 app.use(morgan('short'))
 
 // Get all the users defined
-app.get('/', function (req, res) {
+/*app.get('/', function (req, res) {
   models.User.findAll()
     .then((users) => {
       res.json(users)
@@ -27,10 +31,10 @@ app.post('/', function(req, res) {
     .then(() => {
       res.send('User added !')
     })
-})
+})*/
 
 // Synchronize models
-models.sequelize.sync().then(function() {
+//models.sequelize.sync().then(function() {
   /**
    * Listen on provided port, on all network interfaces.
    * 
@@ -39,4 +43,4 @@ models.sequelize.sync().then(function() {
   app.listen(3000, function() {
     console.log('Express server listening on port 3000');
   });
-});
+//});
